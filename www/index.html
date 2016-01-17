@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/lib/Chart.min.js"></script>
+        <script type="text/javascript" src="js/lib/jquery.min.js"></script>
+        <script type="text/javascript" src="js/lib/jquery.mobile-1.4.5.min.js"></script>
+        <script type="text/javascript" src="js/db.js"></script>
+        <script type="text/javascript" src="js/gyoshu.js"></script>
+        <script type="text/javascript" src="js/list.js"></script>
+        <script type="text/javascript" src="js/kabu.js"></script>
+        <script type="text/javascript" src="js/chart.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <title>配当管理</title>
+    </head>
+    <body>
+        <div id="list" data-role="page">
+            <div data-role="header">
+                <h1>銘柄一覧/配当利回り</h1>
+                <a href="#input" class="ui-btn ui-btn-right ui-btn-icon-notext ui-icon-plus ui-corner-all" data-transition="slide" onclick="clearKabu();"></a>
+            </div>
+            <div role="main" class="ui-content">
+                <div id="listcontent"></div>
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#list" data-role="button" data-transition="none"><img src="img/pen.svg" style="height:25px;" /></a></li>
+                        <li><a href="#graph" data-role="button" data-transition="none" onclick="drawChart();"><img src="img/graph.svg" style="height:25px;" /></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="input" data-role="page">
+            <div data-role="header">
+                <a class="ui-btn ui-btn-icon-notext ui-icon-back ui-corner-all" data-rel="back" data-transition="slide"></a>
+                <h1>銘柄入力</h1>
+            </div>
+            <div role="main" class="ui-content">
+                <label for="iname">銘柄名</label>
+                <input name="name" id="iname" placeholder="配当会社" value="" type="text">
+                <label for="iavg">平均単価</label>
+                <input name="avg" id="iavg" placeholder="18000" value="" type="text">
+                <label for="icount">取得株数</label>
+                <input name="count" id="icount" placeholder="100" value="" type="text">
+                <label for="ihaito">1株あたり年間配当</label>
+                <input name="haito" id="ihaito" placeholder="100" value="" type="text">
+                <label for="igyoshu">業種</label>
+                <select name="gyoshu" id="igyoshu"></select>
+                <input id="ikey" type="hidden" value="" />
+                <br />
+                <a href="#" data-role="button" data-icon="refresh" onclick="inputKabu();">入力</a>
+                <a href="#" data-role="button" data-icon="delete" onclick="deleteKabu();">削除</a>
+            </div>
+        </div>
+        <div id="graph" data-role="page">
+            <div data-role="header">
+                <h1>業種別配当割合</h1>
+            </div>
+            <div role="main" class="ui-content">
+                <div style="width:100%">
+                    <div id="chartcontent" style="margin: 0 auto; width: 300px;">
+                        <canvas id="chartcontent" width="300" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#list" data-role="button" data-transition="none"><img src="img/pen.svg" style="height:25px;" /></a></li>
+                        <li><a href="#graph" data-role="button" data-transition="none" onclick="drawChart();"><img src="img/graph.svg" style="height:25px;" /></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
