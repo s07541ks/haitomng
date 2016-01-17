@@ -81,11 +81,11 @@
                 <label for="iname">銘柄名</label>
                 <input name="name" id="iname" placeholder="配当会社" value="" type="text">
                 <label for="iavg">平均単価</label>
-                <input name="avg" id="iavg" placeholder="18000" value="" type="text">
+                <input name="avg" id="iavg" placeholder="18000" value="" type="number">
                 <label for="icount">取得株数</label>
-                <input name="count" id="icount" placeholder="100" value="" type="text">
+                <input name="count" id="icount" placeholder="100" value="" type="number">
                 <label for="ihaito">1株あたり年間配当</label>
-                <input name="haito" id="ihaito" placeholder="100" value="" type="text">
+                <input name="haito" id="ihaito" placeholder="100" value="" type="number">
                 <label for="igyoshu">業種</label>
                 <select name="gyoshu" id="igyoshu"></select>
                 <input id="ikey" type="hidden" value="" />
@@ -100,9 +100,7 @@
             </div>
             <div role="main" class="ui-content">
                 <div style="width:100%">
-                    <div id="chartcontent" style="margin: 0 auto; width: 300px;">
-                        <canvas id="chartcontent" width="300" height="300"></canvas>
-                    </div>
+                    <div id="chartcontent" style="margin: 0 auto; width: 300px;"></div>
                 </div>
             </div>
             <div data-role="footer" data-position="fixed">
@@ -111,6 +109,17 @@
                         <li><a href="#list" data-role="button" data-transition="none"><img src="img/pen.svg" style="height:25px;" /></a></li>
                         <li><a href="#graph" data-role="button" data-transition="none" onclick="drawChart();"><img src="img/graph.svg" style="height:25px;" /></a></li>
                     </ul>
+                </div>
+            </div>
+        </div>
+        <div id="subgraph" data-role="page">
+            <div data-role="header" data-position="fixed">
+                <h1>銘柄別配当割合</h1>
+                <a class="ui-btn ui-btn-icon-notext ui-icon-back ui-corner-all" data-rel="back" data-transition="slide"></a>
+            </div>
+            <div role="main" class="ui-content">
+                <div style="width:100%">
+                    <div id="subchartcontent" style="margin: 0 auto; width: 300px;"></div>
                 </div>
             </div>
         </div>

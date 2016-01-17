@@ -7,6 +7,17 @@ function initGyoshu(){
     select.selectmenu();
 }
 
+function gyoshuByLabel(label){
+    var result = 0;
+    $.each(gyoshu(), function(i, val){
+        if (val === label){
+            result = i;
+            return false;
+        }
+    });
+    return result;
+}
+
 function gyoshu(){
     var data = [
         "水産・農林業",
