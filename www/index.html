@@ -48,11 +48,19 @@
     </head>
     <body>
         <div id="list" data-role="page">
-            <div data-role="header">
+            <div data-role="header" data-position="fixed">
                 <h1>銘柄一覧/配当利回り</h1>
                 <a href="#input" class="ui-btn ui-btn-right ui-btn-icon-notext ui-icon-plus ui-corner-all" data-transition="slide" onclick="clearKabu();"></a>
             </div>
             <div role="main" class="ui-content">
+                <ul data-role="listview" data-inset="true">
+                    <li data-role="list-divider">投資合計</li>
+                    <li id="sum_invest"></li>
+                    <li data-role="list-divider">配当合計</li>
+                    <li id="sum_haito"></li>
+                    <li data-role="list-divider">平均利回り</li>
+                    <li id="avg_rimawari"></li>
+                </ul>
                 <div id="listcontent"></div>
             </div>
             <div data-role="footer" data-position="fixed">
@@ -65,7 +73,7 @@
             </div>
         </div>
         <div id="input" data-role="page">
-            <div data-role="header">
+            <div data-role="header" data-position="fixed">
                 <a class="ui-btn ui-btn-icon-notext ui-icon-back ui-corner-all" data-rel="back" data-transition="slide"></a>
                 <h1>銘柄入力</h1>
             </div>
@@ -87,7 +95,7 @@
             </div>
         </div>
         <div id="graph" data-role="page">
-            <div data-role="header">
+            <div data-role="header" data-position="fixed">
                 <h1>業種別配当割合</h1>
             </div>
             <div role="main" class="ui-content">

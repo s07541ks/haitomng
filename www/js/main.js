@@ -2,4 +2,3 @@ function initApp(){
     initGyoshu();
     loadList();
 }
-
