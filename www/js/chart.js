@@ -28,7 +28,8 @@ function drawChart(){
     });
     $('#chartcontent').empty();
     $('#subchartcontent').empty();
-    var canvas = $('<canvas/>').attr({'id':'chartobj','width':300, 'height':300});
+    var width = screen.availWidth*0.9;
+    var canvas = $('<canvas/>').attr({'id':'chartobj','width': width, 'height': width});
     $('#chartcontent').append(canvas);
     var ctx = document.getElementById('chartobj').getContext('2d');
     var pieChart = new Chart(ctx).Pie(datas, {
@@ -44,7 +45,7 @@ function drawChart(){
         var activePoints = pieChart.getSegmentsAtEvent(evt);
         var index = gyoshuByLabel(activePoints[0].label);
         $('#subchartcontent').empty();
-        var canvas = $('<canvas/>').attr({'id':'subchartobj','width':300, 'height':300});
+        var canvas = $('<canvas/>').attr({'id':'subchartobj','width':width, 'height':width});
         $('#subchartcontent').append(canvas);
         var subDatas = subchartData(index);
         var ctx = document.getElementById('subchartobj').getContext('2d');

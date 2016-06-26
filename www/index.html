@@ -28,6 +28,7 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
+        <meta charset="UTF-8">
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
@@ -50,7 +51,6 @@
         <div id="list" data-role="page">
             <div data-role="header" data-position="fixed">
                 <h1>銘柄一覧/配当利回り</h1>
-                <a href="#input" class="ui-btn ui-btn-right ui-btn-icon-notext ui-icon-plus ui-corner-all" data-transition="slide" onclick="clearKabu();"></a>
             </div>
             <div role="main" class="ui-content">
                 <ul data-role="listview" data-inset="true">
@@ -66,7 +66,8 @@
             <div data-role="footer" data-position="fixed">
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="#list" data-role="button" data-transition="none"><img src="img/pen.svg" style="height:25px;" /></a></li>
+                        <li><a href="#input" data-role="button" data-transition="none" onclick="clearKabu();"><img src="img/pen.svg" style="height:25px;" /></a></li>
+                        <li><a href="#list" data-role="button" data-transition="none"><img src="img/list.svg" style="height:25px;" /></a></li>
                         <li><a href="#graph" data-role="button" data-transition="none" onclick="drawChart();"><img src="img/graph.svg" style="height:25px;" /></a></li>
                     </ul>
                 </div>
@@ -74,7 +75,6 @@
         </div>
         <div id="input" data-role="page">
             <div data-role="header" data-position="fixed">
-                <a class="ui-btn ui-btn-icon-notext ui-icon-back ui-corner-all" data-rel="back" data-transition="slide"></a>
                 <h1>銘柄入力</h1>
             </div>
             <div role="main" class="ui-content">
@@ -93,6 +93,15 @@
                 <a href="#" data-role="button" data-icon="refresh" onclick="inputKabu();">入力</a>
                 <a href="#" data-role="button" data-icon="delete" onclick="deleteKabu();">削除</a>
             </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#input" data-role="button" data-transition="none" onclick="clearKabu();"><img src="img/pen.svg" style="height:25px;" /></a></li>
+                        <li><a href="#list" data-role="button" data-transition="none"><img src="img/list.svg" style="height:25px;" /></a></li>
+                        <li><a href="#graph" data-role="button" data-transition="none" onclick="drawChart();"><img src="img/graph.svg" style="height:25px;" /></a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
         <div id="graph" data-role="page">
             <div data-role="header" data-position="fixed">
@@ -100,13 +109,14 @@
             </div>
             <div role="main" class="ui-content">
                 <div style="width:100%">
-                    <div id="chartcontent" style="margin: 0 auto; width: 300px;"></div>
+                    <div id="chartcontent" style="margin: 0 auto;"></div>
                 </div>
             </div>
             <div data-role="footer" data-position="fixed">
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="#list" data-role="button" data-transition="none"><img src="img/pen.svg" style="height:25px;" /></a></li>
+                        <li><a href="#input" data-role="button" data-transition="none" onclick="clearKabu();"><img src="img/pen.svg" style="height:25px;" /></a></li>
+                        <li><a href="#list" data-role="button" data-transition="none"><img src="img/list.svg" style="height:25px;" /></a></li>
                         <li><a href="#graph" data-role="button" data-transition="none" onclick="drawChart();"><img src="img/graph.svg" style="height:25px;" /></a></li>
                     </ul>
                 </div>
@@ -119,7 +129,7 @@
             </div>
             <div role="main" class="ui-content">
                 <div style="width:100%">
-                    <div id="subchartcontent" style="margin: 0 auto; width: 300px;"></div>
+                    <div id="subchartcontent" style="margin: 0 auto;"></div>
                 </div>
             </div>
         </div>

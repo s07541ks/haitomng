@@ -14,7 +14,7 @@ function loadList(){
             $.each(listkabu, function(i, val){
                 var name = val.name;
                 var line = $('<li/>');
-                var link = $('<a/>').attr({'href':'#input', 'data-transition':'slide', 'onclick':'editKabu("'+name+'",'+val.avg+','+val.count+','+val.haito+',"'+val.gyoshu+'",'+i+');'}).text(name);
+                var link = $('<a/>').attr({'href':'#input', 'data-transition':'none', 'onclick':'editKabu("'+name+'",'+val.avg+','+val.count+','+val.haito+',"'+val.gyoshu+'",'+i+');'}).text(name);
                 var count = $('<span/>').attr({'class':'ui-li-count'}).text(val.rimawari+"%");
                 link.append(count);
                 line.append(link);
