@@ -38,11 +38,12 @@
         <script type="text/javascript" src="js/lib/Chart.min.js"></script>
         <script type="text/javascript" src="js/lib/jquery.min.js"></script>
         <script type="text/javascript" src="js/lib/jquery.mobile-1.4.5.min.js"></script>
-        <script type="text/javascript" src="js/db.js"></script>
-        <script type="text/javascript" src="js/gyoshu.js"></script>
-        <script type="text/javascript" src="js/list.js"></script>
+        <script type="text/javascript" src="js/module/master_data/database.js"></script>
+        <script type="text/javascript" src="js/module/master_data/gyoshu.js"></script>
+        <script type="text/javascript" src="js/app/app_list.js"></script>
+        <script type="text/javascript" src="js/app/app_input.js"></script>
+        <script type="text/javascript" src="js/app/app_graph.js"></script>
         <script type="text/javascript" src="js/kabu.js"></script>
-        <script type="text/javascript" src="js/chart.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <title>配当管理</title>
@@ -66,9 +67,9 @@
             <div data-role="footer" data-position="fixed">
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="#input" data-role="button" data-transition="none" onclick="clearKabu();"><img src="img/pen.svg" style="height:25px;" /></a></li>
+                        <li><a href="#input" data-role="button" data-transition="none" onclick="appInput.clear();"><img src="img/pen.svg" style="height:25px;" /></a></li>
                         <li><a href="#list" data-role="button" data-transition="none"><img src="img/list.svg" style="height:25px;" /></a></li>
-                        <li><a href="#graph" data-role="button" data-transition="none" onclick="drawChart();"><img src="img/graph.svg" style="height:25px;" /></a></li>
+                        <li><a href="#graph" data-role="button" data-transition="none" onclick="appGraph.init();"><img src="img/graph.svg" style="height:25px;" /></a></li>
                     </ul>
                 </div>
             </div>
@@ -90,15 +91,15 @@
                 <select name="gyoshu" id="igyoshu"></select>
                 <input id="ikey" type="hidden" value="" />
                 <br />
-                <a href="#" data-role="button" data-icon="refresh" onclick="inputKabu();">入力</a>
-                <a href="#" data-role="button" data-icon="delete" onclick="deleteKabu();">削除</a>
+                <a href="#" data-role="button" data-icon="refresh" onclick="appInput.insert();">入力</a>
+                <a href="#" data-role="button" data-icon="delete" onclick="appInput.delete();">削除</a>
             </div>
             <div data-role="footer" data-position="fixed">
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="#input" data-role="button" data-transition="none" onclick="clearKabu();"><img src="img/pen.svg" style="height:25px;" /></a></li>
+                        <li><a href="#input" data-role="button" data-transition="none" onclick="appInput.clear();"><img src="img/pen.svg" style="height:25px;" /></a></li>
                         <li><a href="#list" data-role="button" data-transition="none"><img src="img/list.svg" style="height:25px;" /></a></li>
-                        <li><a href="#graph" data-role="button" data-transition="none" onclick="drawChart();"><img src="img/graph.svg" style="height:25px;" /></a></li>
+                        <li><a href="#graph" data-role="button" data-transition="none" onclick="appGraph.init();"><img src="img/graph.svg" style="height:25px;" /></a></li>
                     </ul>
                 </div>
             </div>
@@ -115,9 +116,9 @@
             <div data-role="footer" data-position="fixed">
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="#input" data-role="button" data-transition="none" onclick="clearKabu();"><img src="img/pen.svg" style="height:25px;" /></a></li>
+                        <li><a href="#input" data-role="button" data-transition="none" onclick="appInput.clear();"><img src="img/pen.svg" style="height:25px;" /></a></li>
                         <li><a href="#list" data-role="button" data-transition="none"><img src="img/list.svg" style="height:25px;" /></a></li>
-                        <li><a href="#graph" data-role="button" data-transition="none" onclick="drawChart();"><img src="img/graph.svg" style="height:25px;" /></a></li>
+                        <li><a href="#graph" data-role="button" data-transition="none" onclick="appGraph.init();"><img src="img/graph.svg" style="height:25px;" /></a></li>
                     </ul>
                 </div>
             </div>
