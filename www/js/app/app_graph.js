@@ -1,36 +1,8 @@
 var appGraph = {
     init: function(){
-        var selectedGyoshu = this._initSelectedGyoshu();
+        var selectedGyoshu = this._selectedGyoshuData(gyoshu.data());
         this._initContent(selectedGyoshu);
         this._initSlider();
-    },
-    _initSelectedGyoshu: function(){
-        var colors = this._colorData();
-        var count = 0;
-        var sum = 0;
-        var datas = [];
-        $.each(gyoshu.data(), function(i, name){
-            var listkabu = database.read(i);
-            if(listkabu.length === 0){
-            } else {
-                var kabu_sum = 0;
-                $.each(listkabu, function(j, val){
-                    kabu_sum += val.haito * val.count;
-                });
-                var color = colors[count % colors.length];
-                var data = {
-                    index: i,
-                    value: kabu_sum,
-                    color: color[0],
-                    highlight: color[1],
-                    label: name
-                };
-                datas.push(data);
-                sum += kabu_sum;
-                count++;
-            }
-        });
-        return this._percentData(datas, sum);
     },
     _initContent: function(selectedGyoshu){
         $('#chartcontent').empty();
@@ -103,6 +75,35 @@ var appGraph = {
             showTooltips: true
         });
     },
+    _selectedGyoshuData: function(gyoshu_data){
+        var colors = this._colorData();
+        var count = 0;
+        var sum = 0;
+        var datas = [];
+        var gyoshu_master = gyoshu.data();
+        $.each(gyoshu_data, function(i, name){
+            var listkabu = database.read(gyoshu_master.indexOf(name));
+            if(listkabu.length === 0){
+            } else {
+                var kabu_sum = 0;
+                $.each(listkabu, function(j, val){
+                    kabu_sum += val.haito * val.count;
+                });
+                var color = colors[count % colors.length];
+                var data = {
+                    index: i,
+                    value: kabu_sum,
+                    color: color[0],
+                    highlight: color[1],
+                    label: name
+                };
+                datas.push(data);
+                sum += kabu_sum;
+                count++;
+            }
+        });
+        return this._percentData(datas, sum);
+    },
     _kabuData: function(index){
         var colors = this._colorData();
         var sum = 0;
@@ -149,34 +150,13 @@ var appGraph = {
         return this._percentData(datas, sum);
     },
     _catgyoshuData: function(index){
-        var colors = this._colorData();
-        var sum = 0;
-        var count = 0;
-        var datas = [];
         var catgyoshu = gyoshu.category();
         var gyoshus = gyoshu.data();
-        $.each(catgyoshu[index][1], function(i, gyoshu_index){
-            var listkabu = database.read(gyoshu_index);
-            if(listkabu.length === 0){
-            } else {
-                var kabu_sum = 0;
-                $.each(listkabu, function(j, val){
-                    kabu_sum += val.haito * val.count;
-                });
-                var color = colors[count % colors.length];
-                var data = {
-                    index: i,
-                    value: kabu_sum,
-                    color: color[0],
-                    highlight: color[1],
-                    label: gyoshus[gyoshu_index]
-                };
-                datas.push(data);
-                sum += kabu_sum;
-                count++;
-            }
+        var selectedGyoshu = [];
+        $.each(catgyoshu[index][1], function(i, val){
+            selectedGyoshu.push(gyoshus[val]);
         });
-        return this._percentData(datas, sum);
+        return this._selectedGyoshuData(selectedGyoshu);
     },
     _colorData: function() {
         return [
