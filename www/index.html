@@ -33,11 +33,13 @@
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css">
+        <link rel="stylesheet" type="text/css" href="css/lightslider.css">
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/lib/Chart.min.js"></script>
         <script type="text/javascript" src="js/lib/jquery.min.js"></script>
         <script type="text/javascript" src="js/lib/jquery.mobile-1.4.5.min.js"></script>
+        <script type="text/javascript" src="js/lib/lightslider.js"></script>
         <script type="text/javascript" src="js/module/master_data/database.js"></script>
         <script type="text/javascript" src="js/module/master_data/gyoshu.js"></script>
         <script type="text/javascript" src="js/app/app_list.js"></script>
@@ -106,12 +108,10 @@
         </div>
         <div id="graph" data-role="page">
             <div data-role="header" data-position="fixed">
-                <h1>業種別配当割合</h1>
+                <h1>ポートフォリオ</h1>
             </div>
             <div role="main" class="ui-content">
-                <div style="width:100%">
-                    <div id="chartcontent" style="margin: 0 auto;"></div>
-                </div>
+                <div id="chartcontent"></div>
             </div>
             <div data-role="footer" data-position="fixed">
                 <div data-role="navbar">
